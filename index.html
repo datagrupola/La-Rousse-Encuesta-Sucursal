@@ -12,78 +12,80 @@
 
 <body>
 
-<div class="header">
-  <img src="logo.png" alt="La Rousse">
-</div>
-
 <div class="container">
 
-<h2>Su opinión es muy importante para mejorar nuestro servicio. Le tomará menos de 1 minuto responder.</h2>
+  <div class="header">
+    <img src="logo.png" alt="La Rousse">
+  </div>
 
-<form id="form">
+  <h2>Tu opinión nos ayuda a mejorar. Te tomará menos de 1 minuto.</h2>
 
+  <form id="form">
+
+    <!-- SUCURSAL -->
     <label>Sucursal</label>
-<select name="sucursal" required>
-  <option value="">Selecciona sucursal</option>
-  <option value="Huerta">Camelinas - Morelia</option>
-  <option value="Américas">Centro - Morelia</option>
-  <option value="Poniente">Lazaro - Morelia</option>
-  <option value="Poniente">Pepsi - Morelia</option>
-  <option value="Poniente">Poniente - Morelia</option>
-  <option value="Poniente">Gran P - León</option>
-  <option value="Poniente">Del rio - León</option>
-</select>
+    <select name="sucursal" required>
+      <option value="">Selecciona sucursal</option>
+      <option value="Camelinas">Camelinas - Morelia</option>
+      <option value="Centro">Centro - Morelia</option>
+      <option value="Lazaro">Lázaro - Morelia</option>
+      <option value="Pepsi">Pepsi - Morelia</option>
+      <option value="Poniente">Poniente - Morelia</option>
+      <option value="Gran Plaza">Gran Plaza - León</option>
+      <option value="Del Rio">Del Río - León</option>
+    </select>
 
+    <!-- EXPERIENCIA -->
+    <label>¿Cómo fue tu experiencia en tienda?</label>
+    <select name="experiencia" required>
+      <option value="">Selecciona</option>
+      <option value="10">10 - Excelente</option>
+      <option value="9">9</option>
+      <option value="8">8</option>
+      <option value="7">7</option>
+      <option value="6">6</option>
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1 - Muy mala</option>
+    </select>
 
-<label>En una escala del 1 al 10, ¿qué calificación le da a su experiencia general en la tienda?</label>
-<select name="experiencia" required>
-  <option value=""></option>
-  <option value="10">10 - Excelente</option>
-  <option value="9">9</option>
-  <option value="8">8</option>
-  <option value="7">7</option>
-  <option value="6">6</option>
-  <option value="5">5</option>
-  <option value="4">4</option>
-  <option value="3">3</option>
-  <option value="2">2</option>
-  <option value="1">1 - Muy mala</option>
-</select>
+    <input name="comentario_experiencia" placeholder="¿Qué podríamos mejorar?">
 
-<input name="comentario_experiencia" placeholder="¿Qué considera que faltó para mejorar su experiencia?">
+    <!-- ATENCIÓN -->
+    <label>¿Cómo fue la atención del colaborador?</label>
+    <select name="atencion" required>
+      <option value="">Selecciona</option>
+      <option value="10">10 - Excelente</option>
+      <option value="9">9</option>
+      <option value="8">8</option>
+      <option value="7">7</option>
+      <option value="6">6</option>
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1 - Muy mala</option>
+    </select>
 
-<label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
-<select name="atencion" required>
-  <option value=""></option>
-  <option value="10">10 - Excelente</option>
-  <option value="9">9</option>
-  <option value="8">8</option>
-  <option value="7">7</option>
-  <option value="6">6</option>
-  <option value="5">5</option>
-  <option value="4">4</option>
-  <option value="3">3</option>
-  <option value="2">2</option>
-  <option value="1">1 - Muy mala</option>
-</select>
+    <input name="colaborador" placeholder="¿Quién te atendió? (opcional)">
+    <input name="comentario_atencion" placeholder="¿Qué podría mejorar el colaborador?">
 
-<input name="colaborador" placeholder="¿Quién te atendió?">
-<input name="comentario_atencion" placeholder="¿Qué considera le faltó al colaborador para mejorar su atención?">
+    <!-- PRODUCTOS -->
+    <input name="productos_deseados" placeholder="¿Qué te gustaría encontrar en tu próxima visita?">
 
-<input name="productos_deseados" placeholder="¿Qué artículos o productos le gustaría encontrar en su próxima visita?">
+    <!-- RECOMENDACIÓN -->
+    <label>¿Recomendarías la tienda?</label>
+    <select name="recomendaria">
+      <option value="">Selecciona</option>
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select>
 
-<label> ¿Recomendaría visitar la tienda a familiares y amigos?</label>
-<select name="recomendaria">
-  <option value=""></option>
-  <option value="si">Sí</option>
-  <option value="no">No</option>
-</select>
+    <button type="submit">Enviar</button>
 
-<input type="hidden" name="sucursal" value="Huerta">
-
-<button type="submit">Enviar</button>
-
-</form>
+  </form>
 
 </div>
 
