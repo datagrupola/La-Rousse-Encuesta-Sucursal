@@ -3,10 +3,12 @@
   box-sizing: border-box;
 }
 
+/* 🔥 ESTE ES EL FIX IMPORTANTE */
 html, body{
   margin:0;
   padding:0;
-  overflow-x:hidden; /* 🔥 elimina scroll lateral */
+  overflow-x:hidden;
+  width:100%;          /* 👈 agrega esto */
 }
 
 /* BODY */
@@ -26,7 +28,9 @@ body{
 
 .header img{
   height:60px;
-  max-width:100%; /* 🔥 evita desbordes */
+  max-width:100%;
+  display:block;       /* 👈 evita micro overflow */
+  margin:auto;
 }
 
 /* CONTENEDOR */
@@ -34,7 +38,7 @@ body{
   max-width:700px;
   margin:auto;
   padding:20px;
-  width:100%; /* 🔥 importante */
+  width:100%;
 }
 
 /* TITULO */
