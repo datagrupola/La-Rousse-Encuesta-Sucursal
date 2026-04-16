@@ -1,80 +1,87 @@
-/* RESET CLAVE */
+/* RESET */
 *{
   box-sizing: border-box;
 }
 
-/* 🔥 ESTE ES EL FIX IMPORTANTE */
 html, body{
   margin:0;
   padding:0;
+  width:100%;
+  height:100%;
   overflow-x:hidden;
-  width:100%;          /* 👈 agrega esto */
 }
 
 /* BODY */
 body{
   font-family: Arial, sans-serif;
   background:#f5f5f5;
+  display:flex;
+  flex-direction:column;
 }
 
-/* HEADER */
+/* LOGO */
 .header img{
   max-width:100%;
   height:auto;
-  max-height:55px;
+  max-height:60px;
   display:block;
-  margin:auto;
+  margin:10px auto;
 }
 
-.header img{
-  height:60px;
-  max-width:100%;
-  display:block;       /* 👈 evita micro overflow */
-  margin:auto;
-}
-
-/* CONTENEDOR */
+/* CONTENEDOR PRINCIPAL */
 .container{
-  width:100%;
-  max-width:100%;
+  flex:1; /* 🔥 ocupa todo el alto disponible */
+  display:flex;
+  flex-direction:column;
+  justify-content:center; /* 🔥 centra vertical */
   padding:20px;
+  width:100%;
+}
+
+/* FORM (control de ancho para legibilidad) */
+form{
+  width:100%;
+  max-width:600px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
 }
 
 /* TITULO */
 h2{
   text-align:center;
-  font-size:26px;
-  margin:10px 0;
+  font-size:24px;
+  margin:5px 0 15px 0;
 }
 
 /* LABELS */
 label{
   display:block;
-  margin-top:15px;
-  font-size:16px;
+  margin-top:12px;
+  font-size:15px;
 }
 
-/* INPUTS Y SELECTS */
+/* INPUTS */
 select, input{
   width:100%;
-  padding:14px;
-  margin-top:8px;
+  padding:12px;
+  margin-top:6px;
   border-radius:10px;
   border:1px solid #ccc;
-  font-size:15px;
+  font-size:14px;
   background:#fff;
 }
 
 /* BOTÓN */
 button[type="submit"]{
-  margin-top:20px;
-  padding:16px;
+  margin-top:15px;
+  padding:14px;
   width:100%;
   background:black;
   color:white;
   border:none;
   border-radius:12px;
-  font-size:17px;
+  font-size:16px;
 }
 
 /* TOUCH */
