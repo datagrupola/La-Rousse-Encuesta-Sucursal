@@ -1,9 +1,18 @@
+/* RESET CLAVE */
+*{
+  box-sizing: border-box;
+}
+
+html, body{
+  margin:0;
+  padding:0;
+  overflow-x:hidden; /* 🔥 elimina scroll lateral */
+}
+
+/* BODY */
 body{
   font-family: Arial, sans-serif;
-  margin:0;
   background:#f5f5f5;
-  height:100vh;
-  overflow-x:hidden;
 }
 
 /* HEADER */
@@ -17,6 +26,7 @@ body{
 
 .header img{
   height:60px;
+  max-width:100%; /* 🔥 evita desbordes */
 }
 
 /* CONTENEDOR */
@@ -24,18 +34,14 @@ body{
   max-width:700px;
   margin:auto;
   padding:20px;
-  text-align:left;
-  min-height: calc(100vh - 120px);
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
+  width:100%; /* 🔥 importante */
 }
 
 /* TITULO */
 h2{
   text-align:center;
   font-size:26px;
-  margin:10px 0 5px 0;
+  margin:10px 0;
 }
 
 /* LABELS */
@@ -43,7 +49,6 @@ label{
   display:block;
   margin-top:15px;
   font-size:16px;
-  font-weight:500;
 }
 
 /* INPUTS Y SELECTS */
@@ -54,7 +59,6 @@ select, input{
   border-radius:10px;
   border:1px solid #ccc;
   font-size:15px;
-  box-sizing:border-box;
   background:#fff;
 }
 
@@ -68,15 +72,9 @@ button[type="submit"]{
   border:none;
   border-radius:12px;
   font-size:17px;
-  cursor:pointer;
 }
 
-/* INTERACCIÓN TÁCTIL */
+/* TOUCH */
 button, input, select{
   touch-action: manipulation;
-}
-
-/* HOVER (solo desktop) */
-button[type="submit"]:hover{
-  background:#222;
 }
