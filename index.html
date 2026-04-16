@@ -54,6 +54,8 @@
     <input name="comentario_experiencia" placeholder="¿Qué podríamos mejorar?">
 
     <!-- ATENCIÓN -->
+    <input name="colaborador" placeholder="¿Quién te atendió?" required>
+
     <label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
     <select name="atencion" required>
       <option value="">Selecciona</option>
@@ -68,8 +70,6 @@
       <option value="2">2</option>
       <option value="1">1 - Muy mala</option>
     </select>
-
-    <input name="colaborador" placeholder="¿Quién te atendió?" required>
     
     <select name="comentario_atencion">
       <option value="">¿Qué considera le faltó al colaborador para mejorar su atención?</option>
@@ -86,7 +86,7 @@
 
     <!-- RECOMENDACIÓN -->
     <label>¿Recomendaría visitar la tienda a familiares y amigos?</label>
-    <select name="recomendaria">
+    <select name="recomendaria" required>
       <option value="">Selecciona</option>
       <option value="si">Sí</option>
       <option value="no">No</option>
