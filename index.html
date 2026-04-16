@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Encuesta La Rousse</title>
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="header">
+  <img src="logo.png" alt="La Rousse">
+</div>
+
+<div class="container">
+
+<h2>Su opinión es muy importante para mejorar nuestro servicio. Le tomará menos de 1 minuto responder.</h2>
+
+<form id="form">
+
+    <label>Sucursal</label>
+<select name="sucursal" required>
+  <option value="">Selecciona sucursal</option>
+  <option value="Huerta">Huerta</option>
+  <option value="Américas">Américas</option>
+  <option value="León">León</option>
+  <option value="Poniente">Poniente</option>
+  <option value="Poniente">Del Río</option>
+  <option value="Poniente">Gran P</option>
+</select>
+
+
+<label>En una escala del 1 al 10, ¿qué calificación le da a su experiencia general en la tienda?</label>
+<select name="experiencia" required>
+  <option value=""></option>
+  <option value="10">10 - Excelente</option>
+  <option value="9">9</option>
+  <option value="8">8</option>
+  <option value="7">7</option>
+  <option value="6">6</option>
+  <option value="5">5</option>
+  <option value="4">4</option>
+  <option value="3">3</option>
+  <option value="2">2</option>
+  <option value="1">1 - Muy mala</option>
+</select>
+
+<input name="comentario_experiencia" placeholder="¿Qué considera que faltó para mejorar su experiencia?">
+
+<label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
+<select name="atencion" required>
+  <option value=""></option>
+  <option value="10">10 - Excelente</option>
+  <option value="9">9</option>
+  <option value="8">8</option>
+  <option value="7">7</option>
+  <option value="6">6</option>
+  <option value="5">5</option>
+  <option value="4">4</option>
+  <option value="3">3</option>
+  <option value="2">2</option>
+  <option value="1">1 - Muy mala</option>
+</select>
+
+<input name="colaborador" placeholder="¿Quién te atendió?">
+<input name="comentario_atencion" placeholder="¿Qué considera le faltó al colaborador para mejorar su atención?">
+
+<input name="productos_deseados" placeholder="¿Qué artículos o productos le gustaría encontrar en su próxima visita?">
+
+<label> ¿Recomendaría visitar la tienda a familiares y amigos?</label>
+<select name="recomendaria">
+  <option value=""></option>
+  <option value="si">Sí</option>
+  <option value="no">No</option>
+</select>
+
+<input type="hidden" name="sucursal" value="Huerta">
+
+<button type="submit">Enviar</button>
+
+</form>
+
+</div>
+
+<script>
+document.getElementById("form").addEventListener("submit", async e=>{
+  e.preventDefault();
+
+  const data = Object.fromEntries(new FormData(e.target));
+
+  await fetch("https://script.google.com/macros/s/AKfycbyIBUbbeXZ2Qv6TakTC9BP0SixXCR2LWwu7di9l9IAUOdRq-rzjWRyQmHVcC6SDG8Zv/exec", {
+    method:"POST",
+    body: JSON.stringify(data)
+  });
+
+  alert("Gracias por tu opinión 🙌");
+  e.target.reset();
+});
+</script>
+
+</body>
+</html>
