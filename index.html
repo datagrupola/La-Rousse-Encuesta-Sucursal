@@ -57,7 +57,7 @@
     <input name="colaborador" placeholder="¿Quién te atendió?" required>
 
     <label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
-    <select name="atencion" id="atencion" required>
+    <select name="atencion" required>
       <option value="">Selecciona</option>
       <option value="10">10 - Excelente</option>
       <option value="9">9</option>
@@ -71,8 +71,8 @@
       <option value="1">1 - Muy mala</option>
     </select>
     
-    <!-- CHECKBOX CARDS -->
-    <div id="comentario_atencion_container" style="display:none;">
+    <!-- CHECKBOX CARDS (SIEMPRE VISIBLE) -->
+    <div id="comentario_atencion_container">
 
       <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
 
@@ -131,18 +131,6 @@
 
 <script>
 const form = document.getElementById("form");
-const atencionSelect = document.getElementById("atencion");
-const contenedor = document.getElementById("comentario_atencion_container");
-
-// Mostrar/ocultar checkboxes
-atencionSelect.addEventListener("change", () => {
-  if (parseInt(atencionSelect.value) <= 8) {
-    contenedor.style.display = "block";
-  } else {
-    contenedor.style.display = "none";
-    document.querySelectorAll('input[name="comentario_atencion"]').forEach(cb => cb.checked = false);
-  }
-});
 
 form.addEventListener("submit", async e => {
   e.preventDefault();
@@ -166,13 +154,12 @@ form.addEventListener("submit", async e => {
   try {
     await fetch("https://script.google.com/macros/s/AKfycbzC9CEiMyfcT-YFe370fu2nHZupETkUohU3OC5-plxOvlYYHVBt7BdPvb_-wl7k8flu/exec", {
       method: "POST",
-      mode: "no-cors", // 🔥 SOLUCIÓN CORS
+      mode: "no-cors",
       body: JSON.stringify(data)
     });
 
     alert("Gracias por tu opinión 🙌");
     form.reset();
-    contenedor.style.display = "none";
 
   } catch (error) {
     alert("Error al enviar. Intenta de nuevo.");
