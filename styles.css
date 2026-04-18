@@ -72,7 +72,7 @@ button{
   margin-top:20px;
   padding:14px;
   width:100%;
-  background:black;
+  background:#264da0;
   color:white;
   border:none;
   border-radius:12px;
@@ -113,14 +113,14 @@ button{
 
 /* estado seleccionado */
 .checkbox-card:has(input:checked) {
-  background: black;
+  background: #264da0;
   color: white;
-  border-color: black;
+  border-color: #264da0;
 }
 
 /* hover */
 .checkbox-card:hover {
-  border-color: black;
+  border-color: #264da0;
 }
 #comentario_atencion_container > label{
   display: block;
