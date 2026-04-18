@@ -79,16 +79,64 @@ button{
   font-size:16px;
 }
 
-/* ===== 🔥 DESKTOP FIX ===== */
+/* ===== CHECKBOX CARDS (GLOBAL) ===== */
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.checkbox-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+
+  background: #fff;
+  cursor: pointer;
+  user-select: none;
+
+  font-size: 14px;
+  text-align: center;
+
+  transition: all 0.2s ease;
+}
+
+/* ocultar checkbox real */
+.checkbox-card input {
+  display: none;
+}
+
+/* estado seleccionado */
+.checkbox-card:has(input:checked) {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+/* hover */
+.checkbox-card:hover {
+  border-color: black;
+}
+#comentario_atencion_container > label{
+  display: block;
+  margin-bottom: 16px; /* 🔥 controla separación con el grid */
+}
+
+/* ===== 🔥 DESKTOP ===== */
 @media (min-width: 1024px){
 
   body{
-    align-items:flex-start; /* 👈 ya no centrado total */
+    align-items:flex-start;
     padding-top:40px;
   }
 
   .container{
-    max-width:700px; /* 👈 más ancho en desktop */
+    max-width:700px;
     padding:40px;
   }
 

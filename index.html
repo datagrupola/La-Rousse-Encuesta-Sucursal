@@ -57,7 +57,7 @@
     <input name="colaborador" placeholder="¿Quién te atendió?" required>
 
     <label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
-    <select name="atencion" required>
+    <select name="atencion" id="atencion" required>
       <option value="">Selecciona</option>
       <option value="10">10 - Excelente</option>
       <option value="9">9</option>
@@ -71,15 +71,46 @@
       <option value="1">1 - Muy mala</option>
     </select>
     
-    <select name="comentario_atencion">
-      <option value="">¿Qué considera le faltó al colaborador para mejorar su atención?</option>
-      <option value="Amabilidad ">Amabilidad </option>
-      <option value="Imagen">Imagen</option>
-      <option value="Disposición">Disposición</option>
-      <option value="Sonrisa">Sonrisa</option>
-      <option value="Actitud">Actitud</option>
-    </select>
-    
+    <!-- CHECKBOXES -->
+    <div id="comentario_atencion_container" style="display:none;">
+
+  <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
+
+  <div class="checkbox-group">
+
+    <label class="checkbox-card">
+      <input type="checkbox" name="comentario_atencion" value="Amabilidad">
+      <span>Amabilidad</span>
+    </label>
+
+    <label class="checkbox-card">
+      <input type="checkbox" name="comentario_atencion" value="Imagen">
+      <span>Imagen</span>
+    </label>
+
+    <label class="checkbox-card">
+      <input type="checkbox" name="comentario_atencion" value="Disposición">
+      <span>Disposición</span>
+    </label>
+
+    <label class="checkbox-card">
+      <input type="checkbox" name="comentario_atencion" value="Sonrisa">
+      <span>Sonrisa</span>
+    </label>
+
+    <label class="checkbox-card">
+      <input type="checkbox" name="comentario_atencion" value="Actitud">
+      <span>Actitud</span>
+    </label>
+
+    <label class="checkbox-card">
+      <input type="checkbox" name="comentario_atencion" value="Capacitación">
+      <span>Capacitación</span>
+    </label>
+
+  </div>
+
+</div>
 
     <!-- PRODUCTOS -->
     <input name="productos_deseados" placeholder="¿Qué te gustaría encontrar en tu próxima visita?">
@@ -99,18 +130,58 @@
 </div>
 
 <script>
-document.getElementById("form").addEventListener("submit", async e=>{
+const form = document.getElementById("form");
+const atencionSelect = document.getElementById("atencion");
+const contenedor = document.getElementById("comentario_atencion_container");
+
+// Mostrar/ocultar checkboxes
+atencionSelect.addEventListener("change", () => {
+  if (parseInt(atencionSelect.value) <= 8) {
+    contenedor.style.display = "block";
+  } else {
+    contenedor.style.display = "none";
+
+    // limpiar checkboxes
+    document.querySelectorAll('input[name="comentario_atencion"]').forEach(cb => cb.checked = false);
+  }
+});
+
+form.addEventListener("submit", async e => {
   e.preventDefault();
 
-  const data = Object.fromEntries(new FormData(e.target));
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
-  await fetch("https://script.google.com/macros/s/AKfycbyIBUbbeXZ2Qv6TakTC9BP0SixXCR2LWwu7di9l9IAUOdRq-rzjWRyQmHVcC6SDG8Zv/exec", {
-    method:"POST",
-    body: JSON.stringify(data)
-  });
+  // Capturar checkboxes seleccionados
+  const checks = Array.from(
+    document.querySelectorAll('input[name="comentario_atencion"]:checked')
+  ).map(cb => cb.value);
 
-  alert("Gracias por tu opinión 🙌");
-  e.target.reset();
+  data.comentario_atencion = checks.join(", ");
+
+  // Validación mínima
+  if (!data.sucursal || !data.experiencia || !data.atencion) {
+    alert("Completa los campos obligatorios");
+    return;
+  }
+
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbzC9CEiMyfcT-YFe370fu2nHZupETkUohU3OC5-plxOvlYYHVBt7BdPvb_-wl7k8flu/exec", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    });
+
+    alert("Gracias por tu opinión 🙌");
+    form.reset();
+    contenedor.style.display = "none";
+
+  } catch (error) {
+    alert("Error al enviar. Intenta de nuevo.");
+    console.error(error);
+  }
 });
 </script>
 
