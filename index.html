@@ -1,174 +1,185 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Encuesta La Rousse</title>
+<title>Encuesta La Rousse</title>
 
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="header">
-      <img src="logo.png" alt="La Rousse">
-    </div>
+  <div class="header">
+    <img src="logo.png" alt="La Rousse">
+  </div>
 
-    <h2>Tu opinión nos ayuda a mejorar. Te tomará menos de 1 minuto.</h2>
+  <h2>Tu opinión nos ayuda a mejorar. Te tomará menos de 1 minuto.</h2>
 
-    <form id="form">
+  <form id="form">
 
-      <!-- SUCURSAL -->
-      <label>Sucursal</label>
-      <select name="sucursal" required>
-        <option value="">Selecciona sucursal</option>
-        <option value="Camelinas">Camelinas - Morelia</option>
-        <option value="Centro">Centro - Morelia</option>
-        <option value="Lazaro">Lázaro - Morelia</option>
-        <option value="Pepsi">Pepsi - Morelia</option>
-        <option value="Poniente">Poniente - Morelia</option>
-        <option value="Gran Plaza">Gran Plaza - León</option>
-        <option value="Del Rio">Del Río - León</option>
-      </select>
+    <!-- SUCURSAL -->
+    <label>Sucursal</label>
+    <select name="sucursal" required>
+      <option value="">Selecciona sucursal</option>
+      <option value="Camelinas">Camelinas - Morelia</option>
+      <option value="Centro">Centro - Morelia</option>
+      <option value="Lazaro">Lázaro - Morelia</option>
+      <option value="Pepsi">Pepsi - Morelia</option>
+      <option value="Poniente">Poniente - Morelia</option>
+      <option value="Gran Plaza">Gran Plaza - León</option>
+      <option value="Del Rio">Del Río - León</option>
+    </select>
 
-      <!-- EXPERIENCIA -->
-      <label>En una escala del 1 al 10, ¿qué calificación le da a su experiencia general en la tienda?</label>
-      <select name="experiencia" required>
-        <option value="">Selecciona</option>
-        <option value="10">10 - Excelente</option>
-        <option value="9">9</option>
-        <option value="8">8</option>
-        <option value="7">7</option>
-        <option value="6">6</option>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1 - Muy mala</option>
-      </select>
+    <!-- EXPERIENCIA -->
+    <label>En una escala del 1 al 10, ¿qué calificación le da a su experiencia general en la tienda?</label>
+    <select name="experiencia" required>
+      <option value="">Selecciona</option>
+      <option value="10">10 - Excelente</option>
+      <option value="9">9</option>
+      <option value="8">8</option>
+      <option value="7">7</option>
+      <option value="6">6</option>
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1 - Muy mala</option>
+    </select>
 
-      <input name="comentario_experiencia" placeholder="¿Qué podríamos mejorar?">
+    <input name="comentario_experiencia" placeholder="¿Qué podríamos mejorar?">
 
-      <!-- ATENCIÓN -->
-      <input name="colaborador" placeholder="¿Quién te atendió?" required>
+    <!-- ATENCIÓN -->
+    <input name="colaborador" placeholder="¿Quién te atendió?" required>
 
-      <label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
-      <select name="atencion" id="atencion" required>
-        <option value="">Selecciona</option>
-        <option value="10">10 - Excelente</option>
-        <option value="9">9</option>
-        <option value="8">8</option>
-        <option value="7">7</option>
-        <option value="6">6</option>
-        <option value="5">5</option>
-        <option value="4">4</option>
-        <option value="3">3</option>
-        <option value="2">2</option>
-        <option value="1">1 - Muy mala</option>
-      </select>
+    <label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
+    <select name="atencion" id="atencion" required>
+      <option value="">Selecciona</option>
+      <option value="10">10 - Excelente</option>
+      <option value="9">9</option>
+      <option value="8">8</option>
+      <option value="7">7</option>
+      <option value="6">6</option>
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1 - Muy mala</option>
+    </select>
+    
+    <!-- CHECKBOX CARDS -->
+    <div id="comentario_atencion_container" style="display:none;">
 
-      <!-- CHECKBOXES SIEMPRE VISIBLES -->
-      <div id="comentario_atencion_container">
+      <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
 
-        <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
+      <div class="checkbox-group">
 
-        <div class="checkbox-group">
+        <label class="checkbox-card">
+          <input type="checkbox" name="comentario_atencion" value="Amabilidad">
+          <span>Amabilidad</span>
+        </label>
 
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Amabilidad">
-            <span>Amabilidad</span>
-          </label>
+        <label class="checkbox-card">
+          <input type="checkbox" name="comentario_atencion" value="Imagen">
+          <span>Imagen</span>
+        </label>
 
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Imagen">
-            <span>Imagen</span>
-          </label>
+        <label class="checkbox-card">
+          <input type="checkbox" name="comentario_atencion" value="Disposición">
+          <span>Disposición</span>
+        </label>
 
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Disposición">
-            <span>Disposición</span>
-          </label>
+        <label class="checkbox-card">
+          <input type="checkbox" name="comentario_atencion" value="Sonrisa">
+          <span>Sonrisa</span>
+        </label>
 
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Sonrisa">
-            <span>Sonrisa</span>
-          </label>
+        <label class="checkbox-card">
+          <input type="checkbox" name="comentario_atencion" value="Actitud">
+          <span>Actitud</span>
+        </label>
 
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Actitud">
-            <span>Actitud</span>
-          </label>
-
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Capacitación">
-            <span>Capacitación</span>
-          </label>
-
-        </div>
+        <label class="checkbox-card">
+          <input type="checkbox" name="comentario_atencion" value="Capacitación">
+          <span>Capacitación</span>
+        </label>
 
       </div>
 
-      <!-- PRODUCTOS -->
-      <input name="productos_deseados" placeholder="¿Qué te gustaría encontrar en tu próxima visita?">
+    </div>
 
-      <!-- RECOMENDACIÓN -->
-      <label>¿Recomendaría visitar la tienda a familiares y amigos?</label>
-      <select name="recomendaria" required>
-        <option value="">Selecciona</option>
-        <option value="si">Sí</option>
-        <option value="no">No</option>
-      </select>
+    <!-- PRODUCTOS -->
+    <input name="productos_deseados" placeholder="¿Qué te gustaría encontrar en tu próxima visita?">
 
-      <button type="submit">Enviar</button>
+    <!-- RECOMENDACIÓN -->
+    <label>¿Recomendaría visitar la tienda a familiares y amigos?</label>
+    <select name="recomendaria" required>
+      <option value="">Selecciona</option>
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select>
 
-    </form>
+    <button type="submit">Enviar</button>
 
-  </div>
+  </form>
 
-  <script>
-    const form = document.getElementById("form");
+</div>
 
-    form.addEventListener("submit", async e => {
-      e.preventDefault();
+<script>
+const form = document.getElementById("form");
+const atencionSelect = document.getElementById("atencion");
+const contenedor = document.getElementById("comentario_atencion_container");
 
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
+// Mostrar/ocultar checkboxes
+atencionSelect.addEventListener("change", () => {
+  if (parseInt(atencionSelect.value) <= 8) {
+    contenedor.style.display = "block";
+  } else {
+    contenedor.style.display = "none";
+    document.querySelectorAll('input[name="comentario_atencion"]').forEach(cb => cb.checked = false);
+  }
+});
 
-      // Capturar checkboxes seleccionados
-      const checks = Array.from(
-        document.querySelectorAll('input[name="comentario_atencion"]:checked')
-      ).map(cb => cb.value);
+form.addEventListener("submit", async e => {
+  e.preventDefault();
 
-      data.comentario_atencion = checks.join(", ");
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
 
-      // Validación mínima
-      if (!data.sucursal || !data.experiencia || !data.atencion) {
-        alert("Completa los campos obligatorios");
-        return;
-      }
+  // Capturar checkboxes seleccionados
+  const checks = Array.from(
+    document.querySelectorAll('input[name="comentario_atencion"]:checked')
+  ).map(cb => cb.value);
 
-      try {
-        await fetch("https://script.google.com/macros/s/AKfycbw3LXFKRAVLo9OdXEMorf0q9pDckn526N4wRlUCx2ho2_eVIg4CXZVxguvOfz5jmJgx/exec", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data)
-        });
+  data.comentario_atencion = checks.join(", ");
 
-        alert("Gracias por tu opinión 🙌");
-        form.reset();
+  // Validación mínima
+  if (!data.sucursal || !data.experiencia || !data.atencion) {
+    alert("Completa los campos obligatorios");
+    return;
+  }
 
-      } catch (error) {
-        alert("Error al enviar. Intenta de nuevo.");
-        console.error(error);
-      }
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbzC9CEiMyfcT-YFe370fu2nHZupETkUohU3OC5-plxOvlYYHVBt7BdPvb_-wl7k8flu/exec", {
+      method: "POST",
+      mode: "no-cors", // 🔥 SOLUCIÓN CORS
+      body: JSON.stringify(data)
     });
-  </script>
+
+    alert("Gracias por tu opinión 🙌");
+    form.reset();
+    contenedor.style.display = "none";
+
+  } catch (error) {
+    alert("Error al enviar. Intenta de nuevo.");
+    console.error(error);
+  }
+});
+</script>
 
 </body>
 </html>
