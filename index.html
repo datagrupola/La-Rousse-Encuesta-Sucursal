@@ -71,7 +71,7 @@
       <option value="1">1 - Muy mala</option>
     </select>
     
-    <!-- CHECKBOX CARDS (SIEMPRE VISIBLE) -->
+    <!-- CHECKBOX CARDS -->
     <div id="comentario_atencion_container">
 
       <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
@@ -136,26 +136,26 @@ form.addEventListener("submit", async e => {
   e.preventDefault();
 
   const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
 
   // Capturar checkboxes seleccionados
   const checks = Array.from(
     document.querySelectorAll('input[name="comentario_atencion"]:checked')
   ).map(cb => cb.value);
 
-  data.comentario_atencion = checks.join(", ");
+  formData.set("comentario_atencion", checks.join(", "));
 
   // Validación mínima
-  if (!data.sucursal || !data.experiencia || !data.atencion) {
+  if (!formData.get("sucursal") || !formData.get("experiencia") || !formData.get("atencion")) {
     alert("Completa los campos obligatorios");
     return;
   }
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbzC9CEiMyfcT-YFe370fu2nHZupETkUohU3OC5-plxOvlYYHVBt7BdPvb_-wl7k8flu/exec", {
+    const params = new URLSearchParams(formData);
+
+    await fetch("https://script.google.com/macros/s/AKfycbw3LXFKRAVLo9OdXEMorf0q9pDckn526N4wRlUCx2ho2_eVIg4CXZVxguvOfz5jmJgx/exec", {
       method: "POST",
-      mode: "no-cors",
-      body: JSON.stringify(data)
+      body: params
     });
 
     alert("Gracias por tu opinión 🙌");
