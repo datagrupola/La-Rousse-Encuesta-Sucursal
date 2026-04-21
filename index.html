@@ -8,6 +8,7 @@
 
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="stylesheet" href="styles.css">
+
 </head>
 
 <body>
@@ -22,108 +23,136 @@
 
   <form id="form">
 
-    <!-- SUCURSAL -->
-    <label>Sucursal</label>
-    <select name="sucursal" required>
-      <option value="">Selecciona sucursal</option>
-      <option value="Camelinas">Camelinas - Morelia</option>
-      <option value="Centro">Centro - Morelia</option>
-      <option value="Lazaro">Lázaro - Morelia</option>
-      <option value="Pepsi">Pepsi - Morelia</option>
-      <option value="Poniente">Poniente - Morelia</option>
-      <option value="Gran Plaza">Gran Plaza - León</option>
-      <option value="Del Rio">Del Río - León</option>
-    </select>
+    <!-- ===================== -->
+    <!-- CARD 1 (CAJERO) -->
+    <!-- ===================== -->
+    <div id="card1">
 
-    <!-- EXPERIENCIA -->
-    <label>En una escala del 1 al 10, ¿qué calificación le da a su experiencia general en la tienda?</label>
-    <select name="experiencia" required>
-      <option value="">Selecciona</option>
-      <option value="10">10 - Excelente</option>
-      <option value="9">9</option>
-      <option value="8">8</option>
-      <option value="7">7</option>
-      <option value="6">6</option>
-      <option value="5">5</option>
-      <option value="4">4</option>
-      <option value="3">3</option>
-      <option value="2">2</option>
-      <option value="1">1 - Muy mala</option>
-    </select>
+      <label>Sucursal</label>
+      <select name="sucursal" required>
+        <option value="">Selecciona sucursal</option>
+        <option value="Camelinas">Camelinas - Morelia</option>
+        <option value="Centro">Centro - Morelia</option>
+        <option value="Lazaro">Lázaro - Morelia</option>
+        <option value="Pepsi">Pepsi - Morelia</option>
+        <option value="Poniente">Poniente - Morelia</option>
+        <option value="Gran Plaza">Gran Plaza - León</option>
+        <option value="Del Rio">Del Río - León</option>
+      </select>
 
-    <input name="comentario_experiencia" placeholder="¿Qué podríamos mejorar?">
+      <input name="colaborador" placeholder="¿Quién te atendió?" required>
 
-    <!-- ATENCIÓN -->
-    <input name="colaborador" placeholder="¿Quién te atendió?" required>
-
-    <label>En la misma escala del 1 al 10, ¿cómo califica la atención de la persona que lo atendió?</label>
-    <select name="atencion" required>
-      <option value="">Selecciona</option>
-      <option value="10">10 - Excelente</option>
-      <option value="9">9</option>
-      <option value="8">8</option>
-      <option value="7">7</option>
-      <option value="6">6</option>
-      <option value="5">5</option>
-      <option value="4">4</option>
-      <option value="3">3</option>
-      <option value="2">2</option>
-      <option value="1">1 - Muy mala</option>
-    </select>
-    
-    <!-- CHECKBOX CARDS -->
-    <div id="comentario_atencion_container">
-
-      <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
-
-      <div class="checkbox-group">
-
-        <label class="checkbox-card">
-          <input type="checkbox" name="comentario_atencion" value="Amabilidad">
-          <span>Amabilidad</span>
-        </label>
-
-        <label class="checkbox-card">
-          <input type="checkbox" name="comentario_atencion" value="Imagen">
-          <span>Imagen</span>
-        </label>
-
-        <label class="checkbox-card">
-          <input type="checkbox" name="comentario_atencion" value="Disposición">
-          <span>Disposición</span>
-        </label>
-
-        <label class="checkbox-card">
-          <input type="checkbox" name="comentario_atencion" value="Sonrisa">
-          <span>Sonrisa</span>
-        </label>
-
-        <label class="checkbox-card">
-          <input type="checkbox" name="comentario_atencion" value="Actitud">
-          <span>Actitud</span>
-        </label>
-
-        <label class="checkbox-card">
-          <input type="checkbox" name="comentario_atencion" value="Capacitación">
-          <span>Capacitación</span>
-        </label>
-
-      </div>
+      <button type="button" id="btnContinuar">Continuar</button>
 
     </div>
 
-    <!-- PRODUCTOS -->
-    <input name="productos_deseados" placeholder="¿Qué te gustaría encontrar en tu próxima visita?">
 
-    <!-- RECOMENDACIÓN -->
-    <label>¿Recomendaría visitar la tienda a familiares y amigos?</label>
-    <select name="recomendaria" required>
-      <option value="">Selecciona</option>
-      <option value="si">Sí</option>
-      <option value="no">No</option>
-    </select>
+    <!-- ===================== -->
+    <!-- CARD 2 (CLIENTE) -->
+    <!-- ===================== -->
+    <div id="card2" style="display:none;">
 
-    <button type="submit">Enviar</button>
+      <!-- EXPERIENCIA -->
+      <label>¿Cómo ha sido tu experiencia en nuestra tienda hoy?</label>
+      <select name="experiencia" required>
+        <option value="">Selecciona una opción</option>
+        <option value="Excelente">Excelente</option>
+        <option value="Bueno">Bueno</option>
+        <option value="Regular">Regular</option>
+        <option value="Malo">Malo</option>
+        <option value="Muy malo">Muy malo</option>
+      </select>
+
+      <input name="comentario_experiencia" placeholder="¿Qué podríamos mejorar?">
+
+      <!-- ATENCIÓN -->
+      <label for="atencion">
+        ¿Cómo califica la atención de la persona que lo atendió?
+      </label>
+
+      <select name="atencion" id="atencion" required>
+        <option value="">Selecciona una opción</option>
+        <option value="Excelente">Excelente</option>
+        <option value="Bueno">Bueno</option>
+        <option value="Regular">Regular</option>
+        <option value="Malo">Malo</option>
+        <option value="Muy malo">Muy malo</option>
+      </select>
+
+      <!-- CHECKBOX -->
+      <div id="comentario_atencion_container">
+
+        <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
+
+        <div class="checkbox-group">
+
+          <label class="checkbox-card">
+            <input type="checkbox" name="comentario_atencion" value="Amabilidad">
+            <span>Amabilidad</span>
+          </label>
+
+          <label class="checkbox-card">
+            <input type="checkbox" name="comentario_atencion" value="Imagen">
+            <span>Imagen</span>
+          </label>
+
+          <label class="checkbox-card">
+            <input type="checkbox" name="comentario_atencion" value="Disposición">
+            <span>Disposición</span>
+          </label>
+
+          <label class="checkbox-card">
+            <input type="checkbox" name="comentario_atencion" value="Sonrisa">
+            <span>Sonrisa</span>
+          </label>
+
+          <label class="checkbox-card">
+            <input type="checkbox" name="comentario_atencion" value="Actitud">
+            <span>Actitud</span>
+          </label>
+
+          <label class="checkbox-card">
+            <input type="checkbox" name="comentario_atencion" value="Capacitación">
+            <span>Capacitación</span>
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- PRODUCTOS -->
+      <input name="productos_deseados" placeholder="¿Qué te gustaría encontrar en tu próxima visita?">
+
+      <!-- RECOMENDACIÓN -->
+      <label>¿Recomendaría visitar la tienda a familiares y amigos?</label>
+
+      <div class="range-wrap">
+        <input
+          type="range"
+          id="recomendacion"
+          name="recomendacion"
+          min="1"
+          max="10"
+          value="10"
+          step="1"
+          required
+          oninput="document.getElementById('recomendacionValor').textContent = this.value"
+        >
+        <div class="range-value">
+          Probabilidad de recomendación: <span id="recomendacionValor">10</span>
+        </div>
+      </div>
+
+      <select name="precios" required>
+        <option value="">¿Qué opinas de nuestros precios respecto a otras tiendas?</option>
+        <option value="mejor">Mucho mejores</option>
+        <option value="similar">Similar a otras tiendas</option>
+        <option value="peor">Peor que otras tiendas</option>
+      </select>
+
+      <button type="submit">Enviar</button>
+
+    </div>
 
   </form>
 
@@ -132,19 +161,38 @@
 <script>
 const form = document.getElementById("form");
 
+// ===== CAMBIO DE CARDS =====
+const btnContinuar = document.getElementById("btnContinuar");
+const card1 = document.getElementById("card1");
+const card2 = document.getElementById("card2");
+
+btnContinuar.addEventListener("click", () => {
+
+  const sucursal = document.querySelector('[name="sucursal"]').value;
+  const colaborador = document.querySelector('[name="colaborador"]').value;
+
+  if (!sucursal || !colaborador) {
+    alert("Completa sucursal y colaborador");
+    return;
+  }
+
+  card1.style.display = "none";
+  card2.style.display = "block";
+});
+
+
+// ===== SUBMIT =====
 form.addEventListener("submit", async e => {
   e.preventDefault();
 
   const formData = new FormData(form);
 
-  // Capturar checkboxes seleccionados
   const checks = Array.from(
     document.querySelectorAll('input[name="comentario_atencion"]:checked')
   ).map(cb => cb.value);
 
   formData.set("comentario_atencion", checks.join(", "));
 
-  // Validación mínima
   if (!formData.get("sucursal") || !formData.get("experiencia") || !formData.get("atencion")) {
     alert("Completa los campos obligatorios");
     return;
@@ -160,12 +208,33 @@ form.addEventListener("submit", async e => {
 
     alert("Gracias por tu opinión 🙌");
     form.reset();
+    card2.style.display = "none";
+    card1.style.display = "block";
 
   } catch (error) {
     alert("Error al enviar. Intenta de nuevo.");
     console.error(error);
   }
 });
+
+
+// ===== LÓGICA ATENCIÓN (NUEVA) =====
+const atencionInput = document.getElementById("atencion");
+const comentarioContainer = document.getElementById("comentario_atencion_container");
+
+function toggleComentario() {
+  const valor = atencionInput.value;
+
+  if (valor !== "Excelente" && valor !== "") {
+    comentarioContainer.style.display = "block";
+  } else {
+    comentarioContainer.style.display = "none";
+  }
+}
+
+toggleComentario();
+atencionInput.addEventListener("change", toggleComentario);
+
 </script>
 
 </body>

@@ -19,7 +19,7 @@ body{
   align-items:center;
 }
 
-/* CARD */
+/* CARD PRINCIPAL */
 .container{
   background:#fff;
   width:100%;
@@ -49,12 +49,65 @@ h2{
 form{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:12px;
 }
 
+/* CARDS */
+#card1, #card2{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* ===================== */
+/* 🔥 ESPACIADO CARD 2 (FIX REAL) */
+/* ===================== */
+
+#card2{
+  padding-top:10px;
+}
+
+/* bloque experiencia */
+#card2 > label:first-of-type{
+  margin-top:16px;
+}
+
+#card2 select[name="experiencia"]{
+  margin-bottom:12px;
+}
+
+#card2 input[name="comentario_experiencia"]{
+  margin-bottom:18px;
+}
+
+/* 🔥 bloque atención */
+#card2 label[for="atencion"]{
+  margin-top:6px;
+}
+
+#card2 select[name="atencion"]{
+  margin-bottom:14px;
+}
+
+/* 🔥 comentario atención (cuando aparece) */
+#comentario_atencion_container{
+  display:none;
+  margin-bottom:18px;
+}
+
+/* 🔥 separación hacia productos */
+#card2 input[name="productos_deseados"]{
+  margin-top:6px;
+  margin-bottom:18px;
+}
+
+/* ===================== */
 /* LABELS */
+/* ===================== */
+
 label{
   font-size:13px;
+  font-weight:500;
 }
 
 /* INPUTS */
@@ -65,6 +118,14 @@ select, input{
   border:1px solid #ccc;
   font-size:14px;
   background:#fff;
+  transition: all 0.2s ease;
+}
+
+/* FOCUS */
+select:focus, input:focus{
+  outline:none;
+  border-color:#264da0;
+  box-shadow:0 0 0 2px rgba(38,77,160,0.1);
 }
 
 /* BOTÓN */
@@ -77,14 +138,45 @@ button{
   border:none;
   border-radius:12px;
   font-size:16px;
+  cursor:pointer;
+  transition: all 0.2s ease;
 }
 
-/* ===== CHECKBOX CARDS (GLOBAL) ===== */
+button:hover{
+  background:#1e3f85;
+}
+
+button:active{
+  transform:scale(0.98);
+}
+
+/* ===================== */
+/* RANGE */
+/* ===================== */
+
+.range-wrap{
+  margin:12px 0 18px 0;
+}
+
+.range-wrap input[type="range"]{
+  width:100%;
+}
+
+.range-value{
+  text-align:center;
+  font-size:14px;
+  margin-top:6px;
+  font-weight:600;
+}
+
+/* ===================== */
+/* CHECKBOX CARDS */
+/* ===================== */
 
 .checkbox-group {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 10px;
 }
 
 .checkbox-card {
@@ -106,28 +198,30 @@ button{
   transition: all 0.2s ease;
 }
 
-/* ocultar checkbox real */
 .checkbox-card input {
   display: none;
 }
 
-/* estado seleccionado */
 .checkbox-card:has(input:checked) {
   background: #264da0;
   color: white;
   border-color: #264da0;
 }
 
-/* hover */
 .checkbox-card:hover {
   border-color: #264da0;
 }
+
+/* LABEL CHECKBOX */
 #comentario_atencion_container > label{
   display: block;
-  margin-bottom: 16px; /* 🔥 controla separación con el grid */
+  margin-bottom: 16px;
 }
 
-/* ===== 🔥 DESKTOP ===== */
+/* ===================== */
+/* DESKTOP */
+/* ===================== */
+
 @media (min-width: 1024px){
 
   body{
