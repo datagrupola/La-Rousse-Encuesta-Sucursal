@@ -24,23 +24,32 @@
   <form id="form">
 
     <!-- ===================== -->
-    <!-- CARD 1 (CAJERO) -->
+    <!-- CARD 1 -->
     <!-- ===================== -->
     <div id="card1">
 
-      <label>Sucursal</label>
-      <select name="sucursal" required>
-        <option value="">Selecciona sucursal</option>
-        <option value="Camelinas">Camelinas - Morelia</option>
-        <option value="Centro">Centro - Morelia</option>
-        <option value="Lazaro">Lázaro - Morelia</option>
-        <option value="Pepsi">Pepsi - Morelia</option>
-        <option value="Poniente">Poniente - Morelia</option>
-        <option value="Gran Plaza">Gran Plaza - León</option>
-        <option value="Del Rio">Del Río - León</option>
-      </select>
+      <div class="grid-2">
 
-      <input name="colaborador" placeholder="¿Quién te atendió?" required>
+        <div class="section">
+          <label>Sucursal</label>
+          <select name="sucursal" required>
+            <option value="">Selecciona sucursal</option>
+            <option value="Camelinas">Camelinas - Morelia</option>
+            <option value="Centro">Centro - Morelia</option>
+            <option value="Lazaro">Lázaro - Morelia</option>
+            <option value="Pepsi">Pepsi - Morelia</option>
+            <option value="Poniente">Poniente - Morelia</option>
+            <option value="Gran Plaza">Gran Plaza - León</option>
+            <option value="Del Rio">Del Río - León</option>
+          </select>
+        </div>
+
+        <div class="section">
+          <label>¿Quién te atendió?</label>
+          <input type="text" name="colaborador" required>
+        </div>
+
+      </div>
 
       <button type="button" id="btnContinuar">Continuar</button>
 
@@ -48,109 +57,103 @@
 
 
     <!-- ===================== -->
-    <!-- CARD 2 (CLIENTE) -->
+    <!-- CARD 2 -->
     <!-- ===================== -->
     <div id="card2" style="display:none;">
 
-      <!-- EXPERIENCIA -->
-      <label>¿Cómo ha sido tu experiencia en nuestra tienda hoy?</label>
-      <select name="experiencia" required>
-        <option value="">Selecciona una opción</option>
-        <option value="Excelente">Excelente</option>
-        <option value="Bueno">Bueno</option>
-        <option value="Regular">Regular</option>
-        <option value="Malo">Malo</option>
-        <option value="Muy malo">Muy malo</option>
-      </select>
+      <!-- RECOMENDACIÓN -->
+      <div class="section">
+        <label>¿Recomendaría visitar la tienda a familiares y amigos?</label>
 
-      <input name="comentario_experiencia" placeholder="¿Qué podríamos mejorar?">
+        <div class="range-wrap">
+          <input
+            type="range"
+            id="recomendacion"
+            name="recomendacion"
+            min="1"
+            max="10"
+            value="10"
+            step="1"
+            required
+            oninput="recomendacionValor.textContent = this.value"
+          >
+          <div class="range-value">
+            Probabilidad de recomendación: <span id="recomendacionValor">10</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PRECIOS -->
+      <div class="section">
+        <label>¿Qué opinas de nuestros precios respecto a otras tiendas?</label>
+        <select name="precios" required>
+          <option value="">Selecciona una opción</option>
+          <option value="mejor">Mucho mejores</option>
+          <option value="similar">Similar a otras tiendas</option>
+          <option value="peor">Peor que otras tiendas</option>
+        </select>
+      </div>
 
       <!-- ATENCIÓN -->
-      <label for="atencion">
-        ¿Cómo califica la atención de la persona que lo atendió?
-      </label>
+      <div class="section">
+        <label>¿Cómo califica la atención de la persona que lo atendió?</label>
+        <select name="atencion" id="atencion" required>
+          <option value="">Selecciona una opción</option>
+          <option value="Excelente">Excelente</option>
+          <option value="Bueno">Bueno</option>
+          <option value="Regular">Regular</option>
+          <option value="Malo">Malo</option>
+          <option value="Muy malo">Muy malo</option>
+        </select>
+      </div>
 
-      <select name="atencion" id="atencion" required>
-        <option value="">Selecciona una opción</option>
-        <option value="Excelente">Excelente</option>
-        <option value="Bueno">Bueno</option>
-        <option value="Regular">Regular</option>
-        <option value="Malo">Malo</option>
-        <option value="Muy malo">Muy malo</option>
-      </select>
-
-      <!-- CHECKBOX -->
-      <div id="comentario_atencion_container">
+      <!-- COMENTARIO ATENCIÓN -->
+      <div id="comentario_atencion_container" class="section">
 
         <label>¿Qué considera le faltó al colaborador para mejorar su atención?</label>
 
         <div class="checkbox-group">
-
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Amabilidad">
-            <span>Amabilidad</span>
-          </label>
-
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Imagen">
-            <span>Imagen</span>
-          </label>
-
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Disposición">
-            <span>Disposición</span>
-          </label>
-
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Sonrisa">
-            <span>Sonrisa</span>
-          </label>
-
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Actitud">
-            <span>Actitud</span>
-          </label>
-
-          <label class="checkbox-card">
-            <input type="checkbox" name="comentario_atencion" value="Capacitación">
-            <span>Capacitación</span>
-          </label>
-
+          <label class="checkbox-card"><input type="checkbox" name="comentario_atencion" value="Amabilidad"><span>Amabilidad</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_atencion" value="Imagen"><span>Imagen</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_atencion" value="Disposición"><span>Disposición</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_atencion" value="Sonrisa"><span>Sonrisa</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_atencion" value="Actitud"><span>Actitud</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_atencion" value="Capacitación"><span>Capacitación</span></label>
         </div>
 
       </div>
 
-      <!-- PRODUCTOS -->
-      <input name="productos_deseados" placeholder="¿Qué te gustaría encontrar en tu próxima visita?">
-
-      <!-- RECOMENDACIÓN -->
-      <label>¿Recomendaría visitar la tienda a familiares y amigos?</label>
-
-      <div class="range-wrap">
-        <input
-          type="range"
-          id="recomendacion"
-          name="recomendacion"
-          min="1"
-          max="10"
-          value="10"
-          step="1"
-          required
-          oninput="document.getElementById('recomendacionValor').textContent = this.value"
-        >
-        <div class="range-value">
-          Probabilidad de recomendación: <span id="recomendacionValor">10</span>
-        </div>
+      <!-- EXPERIENCIA -->
+      <div class="section">
+        <label>¿Cómo ha sido tu experiencia en nuestra tienda hoy?</label>
+        <select name="experiencia" id="experiencia" required>
+          <option value="">Selecciona una opción</option>
+          <option value="Excelente">Excelente</option>
+          <option value="Bueno">Bueno</option>
+          <option value="Regular">Regular</option>
+          <option value="Malo">Malo</option>
+          <option value="Muy malo">Muy malo</option>
+        </select>
       </div>
 
-      <select name="precios" required>
-        <option value="">¿Qué opinas de nuestros precios respecto a otras tiendas?</option>
-        <option value="mejor">Mucho mejores</option>
-        <option value="similar">Similar a otras tiendas</option>
-        <option value="peor">Peor que otras tiendas</option>
-      </select>
+      <!-- COMENTARIO EXPERIENCIA -->
+      <div id="comentario_experiencia_container" class="section">
 
-      <button type="submit">Enviar</button>
+        <label>¿Qué podríamos mejorar?</label>
+
+        <div class="checkbox-group">
+          <label class="checkbox-card"><input type="checkbox" name="comentario_experiencia" value="No encontré lo que buscaba"><span>No encontré lo que buscaba</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_experiencia" value="Mala atención del personal"><span>Mala atención del personal</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_experiencia" value="Precios no me parecieron atractivos"><span>Precios no me parecieron atractivos</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_experiencia" value="Tienda desordenada o difícil de recorrer"><span>Tienda desordenada o difícil de recorrer</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_experiencia" value="Filas largas / caja lenta"><span>Filas largas / caja lenta</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_experiencia" value="Mercancía poco atractiva"><span>Mercancía poco atractiva</span></label>
+          <label class="checkbox-card"><input type="checkbox" name="comentario_experiencia" value="No encontré mi talla"><span>No encontré mi talla</span></label>
+        </div>
+
+      </div>
+
+      <button type="submit" id="btnEnviar">Enviar</button>
 
     </div>
 
@@ -161,15 +164,15 @@
 <script>
 const form = document.getElementById("form");
 
-// ===== CAMBIO DE CARDS =====
 const btnContinuar = document.getElementById("btnContinuar");
 const card1 = document.getElementById("card1");
 const card2 = document.getElementById("card2");
+const btnEnviar = document.getElementById("btnEnviar");
 
+// ===== CONTINUAR =====
 btnContinuar.addEventListener("click", () => {
-
-  const sucursal = document.querySelector('[name="sucursal"]').value;
-  const colaborador = document.querySelector('[name="colaborador"]').value;
+  const sucursal = form.sucursal.value;
+  const colaborador = form.colaborador.value;
 
   if (!sucursal || !colaborador) {
     alert("Completa sucursal y colaborador");
@@ -177,63 +180,83 @@ btnContinuar.addEventListener("click", () => {
   }
 
   card1.style.display = "none";
-  card2.style.display = "block";
+  card2.style.display = "flex";
 });
-
 
 // ===== SUBMIT =====
 form.addEventListener("submit", async e => {
   e.preventDefault();
 
+  if (btnEnviar.disabled) return;
+
+  const textoOriginal = btnEnviar.textContent;
+  btnEnviar.disabled = true;
+  btnEnviar.textContent = "Enviando...";
+
   const formData = new FormData(form);
 
-  const checks = Array.from(
+  const checksAtencion = Array.from(
     document.querySelectorAll('input[name="comentario_atencion"]:checked')
   ).map(cb => cb.value);
 
-  formData.set("comentario_atencion", checks.join(", "));
+  formData.set("comentario_atencion", checksAtencion.join(", "));
 
-  if (!formData.get("sucursal") || !formData.get("experiencia") || !formData.get("atencion")) {
-    alert("Completa los campos obligatorios");
-    return;
-  }
+  const checksExp = Array.from(
+    document.querySelectorAll('input[name="comentario_experiencia"]:checked')
+  ).map(cb => cb.value);
+
+  formData.set("comentario_experiencia", checksExp.join(", "));
 
   try {
     const params = new URLSearchParams(formData);
 
-    await fetch("https://script.google.com/macros/s/AKfycbwVAgaP03ih4f732oWuIez9FQybiGBEa_vyz21KKOHk47IJIkZDv6uVKRa2R9dW8Ck/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbzS8zvcS2LQbs2a17bjISqJ_Uz9z0hNTgqx03qs0kw6Di3Y0M3MYscECzNINDmrXJ7l/exec", {
       method: "POST",
       body: params
     });
 
-    alert("Gracias por tu opinión 🙌");
-    form.reset();
-    card2.style.display = "none";
-    card1.style.display = "block";
+    btnEnviar.textContent = "Enviado ✔";
+
+    setTimeout(() => {
+      form.reset();
+      card2.style.display = "none";
+      card1.style.display = "flex";
+
+      btnEnviar.disabled = false;
+      btnEnviar.textContent = textoOriginal;
+
+      toggleAtencion();
+      toggleExperiencia();
+    }, 1000);
 
   } catch (error) {
-    alert("Error al enviar. Intenta de nuevo.");
+    btnEnviar.disabled = false;
+    btnEnviar.textContent = textoOriginal;
+    alert("Error al enviar");
     console.error(error);
   }
 });
 
+// ===== TOGGLES =====
+const atencion = document.getElementById("atencion");
+const comentarioAtencion = document.getElementById("comentario_atencion_container");
 
-// ===== LÓGICA ATENCIÓN (NUEVA) =====
-const atencionInput = document.getElementById("atencion");
-const comentarioContainer = document.getElementById("comentario_atencion_container");
-
-function toggleComentario() {
-  const valor = atencionInput.value;
-
-  if (valor !== "Excelente" && valor !== "") {
-    comentarioContainer.style.display = "block";
-  } else {
-    comentarioContainer.style.display = "none";
-  }
+function toggleAtencion() {
+  comentarioAtencion.style.display =
+    (atencion.value !== "Excelente" && atencion.value !== "") ? "block" : "none";
 }
+atencion.addEventListener("change", toggleAtencion);
+toggleAtencion();
 
-toggleComentario();
-atencionInput.addEventListener("change", toggleComentario);
+const experiencia = document.getElementById("experiencia");
+const comentarioExp = document.getElementById("comentario_experiencia_container");
+
+function toggleExperiencia() {
+  comentarioExp.style.display =
+    (experiencia.value !== "Excelente" && experiencia.value !== "") ? "block" : "none";
+}
+experiencia.addEventListener("change", toggleExperiencia);
+toggleExperiencia();
 
 </script>
 
