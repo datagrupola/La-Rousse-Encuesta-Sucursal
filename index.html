@@ -32,21 +32,23 @@
 
         <div class="section">
           <label>Sucursal</label>
-          <select name="sucursal" required>
+          <select name="sucursal" id="sucursal" required>
             <option value="">Selecciona sucursal</option>
-            <option value="Camelinas">Camelinas - Morelia</option>
-            <option value="Centro">Centro - Morelia</option>
-            <option value="Lazaro">Lázaro - Morelia</option>
-            <option value="Pepsi">Pepsi - Morelia</option>
-            <option value="Poniente">Poniente - Morelia</option>
-            <option value="Gran Plaza">Gran Plaza - León</option>
-            <option value="Del Rio">Del Río - León</option>
+            <option value="CAMELINAS">Camelinas - Morelia</option>
+            <option value="CENTRO">Centro - Morelia</option>
+            <option value="LAZARO">Lázaro - Morelia</option>
+            <option value="PEPSI">Pepsi - Morelia</option>
+            <option value="PONIENTE">Poniente - Morelia</option>
+            <option value="GRAN_P_LEON">Gran Plaza - León</option>
+            <option value="DEL_RIO">Del Río - León</option>
           </select>
         </div>
 
         <div class="section">
           <label>¿Quién te atendió?</label>
-          <input type="text" name="colaborador" required>
+          <select name="colaborador" id="colaborador" required>
+            <option value="">Cargando vendedores...</option>
+          </select>
         </div>
 
       </div>
@@ -169,6 +171,70 @@ const card1 = document.getElementById("card1");
 const card2 = document.getElementById("card2");
 const btnEnviar = document.getElementById("btnEnviar");
 
+const sucursalSelect = document.getElementById("sucursal");
+const colaboradorSelect = document.getElementById("colaborador");
+
+const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycby5upgBNNjpMQfNSn_iUgmZW-jYdsur6LEoVC01OwpVGwgec2njJECX4plJxzPW7Y3o/exec";
+
+let vendedoresGlobal = [];
+let vendedoresCargados = false;
+
+// ===== CARGA DE VENDEDORES =====
+async function cargarVendedores() {
+  try {
+    colaboradorSelect.innerHTML = '<option value="">Cargando vendedores...</option>';
+
+    const response = await fetch(ENDPOINT_URL);
+    const data = await response.json();
+
+    if (!Array.isArray(data)) {
+      throw new Error("La respuesta de vendedores no es válida");
+    }
+
+    vendedoresGlobal = data;
+    vendedoresCargados = true;
+
+    actualizarColaboradoresPorSucursal();
+  } catch (error) {
+    vendedoresGlobal = [];
+    vendedoresCargados = false;
+    colaboradorSelect.innerHTML = '<option value="">Error cargando vendedores</option>';
+    console.error("Error cargando vendedores:", error);
+  }
+}
+
+function actualizarColaboradoresPorSucursal() {
+  const sucursal = sucursalSelect.value;
+
+  if (!vendedoresCargados) {
+    colaboradorSelect.innerHTML = '<option value="">Cargando vendedores...</option>';
+    return;
+  }
+
+  if (!sucursal) {
+    colaboradorSelect.innerHTML = '<option value="">Selecciona primero una sucursal</option>';
+    return;
+  }
+
+  const filtrados = vendedoresGlobal.filter(vendedor => vendedor.sucursal === sucursal);
+
+  colaboradorSelect.innerHTML = '<option value="">Selecciona vendedor</option>';
+
+  if (filtrados.length === 0) {
+    colaboradorSelect.innerHTML = '<option value="">No hay vendedores disponibles</option>';
+    return;
+  }
+
+  filtrados.forEach(vendedor => {
+    const option = document.createElement("option");
+    option.value = vendedor.nombre;
+    option.textContent = vendedor.nombre;
+    colaboradorSelect.appendChild(option);
+  });
+}
+
+sucursalSelect.addEventListener("change", actualizarColaboradoresPorSucursal);
+
 // ===== CONTINUAR =====
 btnContinuar.addEventListener("click", () => {
   const sucursal = form.sucursal.value;
@@ -210,7 +276,7 @@ form.addEventListener("submit", async e => {
   try {
     const params = new URLSearchParams(formData);
 
-    await fetch("https://script.google.com/macros/s/AKfycbzS8zvcS2LQbs2a17bjISqJ_Uz9z0hNTgqx03qs0kw6Di3Y0M3MYscECzNINDmrXJ7l/exec", {
+    await fetch(ENDPOINT_URL, {
       method: "POST",
       body: params
     });
@@ -227,6 +293,7 @@ form.addEventListener("submit", async e => {
 
       toggleAtencion();
       toggleExperiencia();
+      actualizarColaboradoresPorSucursal();
     }, 1000);
 
   } catch (error) {
@@ -258,6 +325,8 @@ function toggleExperiencia() {
 experiencia.addEventListener("change", toggleExperiencia);
 toggleExperiencia();
 
+// ===== INICIO =====
+cargarVendedores();
 </script>
 
 </body>
